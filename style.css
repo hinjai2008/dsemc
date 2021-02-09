@@ -1,0 +1,39 @@
+ul.navbuttons {
+    background-color: rgb(118, 118, 228);
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+li.navbuttons {
+    float: left;
+}
+li.navbuttons a {
+    display: block;
+    padding:15px 12px;
+    text-decoration: none;
+    text-align:center;
+    color: rgb(238, 240, 134);
+    transition: background-color 0.2s, color 0.2s
+}
+li.navbuttons a:hover {
+    background-color:rgb(6, 6, 109);
+    color: white
+}
+li.navbuttons span {
+    display:block;
+    padding:15px 30px;
+    text-align:center;
+}
+table {
+    width:100%;
+    border-collapse:collapse;
+}
+th, td {
+    border: 1px solid #dddddd;
+    padding: 5px;
+    text-align: left
+} 
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">  
+    <script src="jquery-3.5.1.js"></script>
+    <script src="myScript.js"></script>
+    <script src="data.js"></script>
+    <style>
+        #choices li {
+            margin-bottom: 7px;
+        }
+        #choices li {
+            margin-left: 10px;
+        }
+        #choices li:nth-child(5n) {
+            margin-bottom: 30px;
+        }
+        #choices {
+            position: relative;
+            width:300px;
+            height: 650px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+        #subAnsBtn {
+            position:absolute;
+            right:0px;
+            bottom:45px;
+        }
+        #clock {
+            position: absolute;
+            right: 50px;
+            top: 150px
+        }
+    </style>
+</head>
+<body>
+    <ul class="navbuttons">
+        <li class="navbuttons"><span>Hello</span></li>
+        <li class="navbuttons"><a href="domc.html">challenge</a></li>
+        <li class="navbuttons"><a href="index.html">answer</a></li>
+        <li class="navbuttons"><a href="#">Tutorial</a></li>
+        <li class="navbuttons"><a href="#">Contact Us</a></li>
+    </ul>
+    <br>
+    <div id = "testSelect">
+    <span>subject: </span>
+    <select id="select_subject">
+        <option value="none">Please Select</option>
+        <option value="bio_mc">Biology</option>
+        <option value="chem_mc">Chemistry</option>
+        <option value="phy_mc">Physics</option>
+        <option value="math_mc">Mathematics</option>
+    </select><br><br>
+    <span>year: </span><select id='select_year' onchange='selected(response_array,false)'><option value='none'>--</option></select>
+    <span>paper: </span><select id='select_paper' onchange='selected(response_array,false)'><option value='none'>--</option></select>
+    <br><br><br><span>timer(min): </span><select id="selectTime"><option value="off" selected>OFF</select>
+    <span style="margin-left: 5px;"><span>auto-submission</span><input id="autoSubBox" type="checkbox" disabled></input></span>
+    <br><br><button id="showQuestion">test</button>
+    </div>
+    <form>
+    <h2 id="clock"></h2>
+    <ol id='choices'>
+        <!-- <li>
+            <form>
+                <input name="Q1" type="radio">
+                <input name="Q1" type="radio">
+                <input name="Q1" type="radio">
+                <input name="Q1" type="radio">
+            </form>
+        </li> -->
+    </ol>
+    </form>
+    <p id="mark"></p>
+    <p id="levelMark"></p>
+    <div id="markingTable"></div>
+    <script>
+        //timer options
+        window.onload = function(){
+        var target = document.getElementById("selectTime")
+        for (var i=5; i<81; i+=5) {
+            var timeOpt = document.createElement("OPTION");
+            timeOpt.value = i
+            timeOpt.innerHTML = i
+            target.appendChild(timeOpt)
+        }}
+
+        document.getElementById("showQuestion").addEventListener("click", function(evt){
+            var confirmStart = confirm("The Test will start right away. Confirm You want to start now")
+            if (confirmStart == true) {
+                setTimer();
+                showTestInfo();
+                showQuestions(filter_array.length);
+            }
+        })
+        document.getElementById("select_subject").addEventListener("change", function(evt){
+            if (evt.target.value != "none") {
+                get_array(evt.target.value,false);
+                selectable(2);
+            }
+            else {
+                window.location.reload(false);
+            }
+        })
+        document.getElementById("selectTime").addEventListener("change", function(evt) {
+            var autoSubbox = document.getElementById("autoSubBox")
+            console.log(evt.target.value)
+            if (evt.target.value != "off") {
+                autoSubbox.disabled = false
+            }
+            else {
+                autoSubbox.disabled = true
+                autoSubbox.checked = false
+            }
+        })
+    </script>
+</body>
+</html>

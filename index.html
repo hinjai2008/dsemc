@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <ul class="navbuttons">
+        <li class="navbuttons"><span>Hello</span></li>
+        <li class="navbuttons"><a href="domc.html">challenge</a></li>
+        <li class="navbuttons"><a href="index.html">answer</a></li>
+        <li class="navbuttons"><a href="#">Tutorial</a></li>
+        <li class="navbuttons"><a href="#">Contact Us</a></li>
+    </ul>
+
+    <button id='bio_mc'  class='subjbuttons'>bio</button>
+    <button id='chem_mc' class='subjbuttons'>chem</button>
+    <button id='phy_mc'  class='subjbuttons'>phy</button>
+    <button id='math_mc' class='subjbuttons'>math</button>
+    <br>
+
+    <!-- <button onclick="sort_data(1)">sort by year </button>
+    <button onclick="sort_data(2)">sort by paper</button>
+    <button onclick="sort_data(3)">sort by Qnum</button>
+    <button onclick="sort_data(4)">sort by Key</button>
+    <button onclick="sort_data(5)">sort by %Correct</button> -->
+    
+
+    <span>year: </span><select id='select_year' onchange='selected(response_array,true)'><option value='none'>--</option></select>
+    <span>paper: </span><select id='select_paper' onchange='selected(response_array,true)'><option value='none'>--</option></select>
+    <span>question number: </span><select id='select_question_num' onchange='selected(response_array,true)'><option value='none'>--</option></select>
+
+    <select id="sort_select" onchange="sort_data()">
+        <option value='1' selected>sort by year</option>
+        <option value='2'>sort by paper</option>
+        <option value='3'>sort by Qnum</option>
+        <option value='4'>sort by Key</option>
+        <option value='5'>sort by %Correct</option>
+    </select>
+
+    <button onclick="reverse_sort()">reverse</button>
+
+    <div id="demo">
+        <table>
+            <tr>
+                <th>year</th>
+                <th>paper</th>
+                <th>Question number</th>
+                <th>Key</th>
+                <th>%Correct</th>
+            </tr>
+        </table>
+    </div>
+    <script src="jquery-3.5.1.js"></script>
+    <script src="data.js"></script>
+    <script src="myScript.js"></script>
+    <script>
+        function initialize() {
+            for (var i = 0; i < $(".subjbuttons").length; i++) {
+                var subjid = $(".subjbuttons")[i].id;
+                $(".subjbuttons")[i].addEventListener("click",function(evt){subjbuttons_events(evt.target.id);})
+                }
+        }
+        window.onload = initialize
+    </script>
+</body>
+</html>
