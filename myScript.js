@@ -157,12 +157,14 @@ function showQuestions(numQuestion){
         var qName = "Q" + String(i+1);
         var qLi = document.createElement("LI");;
         for(var x=0; x<4; x++) {
+            var qLabel = document.createElement("LABEL");
             var ansPairs = {0:"A", 1:"B", 2:"C", 3:"D"};
             var qInput = document.createElement("INPUT");
             qInput.setAttribute("type", "radio");
             qInput.setAttribute("name", qName);
             qInput.setAttribute("value", ansPairs[x]);
-            qLi.appendChild(qInput);
+            qLabel.appendChild(qInput)
+            qLi.appendChild(qLabel);
             }
         var target = document.getElementById("choices");
         target.appendChild(qLi);
@@ -316,6 +318,7 @@ function setTimer() {
         }
         var display = adjustedTime(hour) + ":" + adjustedTime(minute) + ":" + adjustedTime(second);
         document.getElementById("clock").innerHTML = display; 
+        document.getElementById("clockContainer").style.visibility = "visible";
         var t = setInterval(countdown,1000)
         function countdown() {
             second -= 1
@@ -340,5 +343,7 @@ function setTimer() {
             var display = adjustedTime(hour) + ":" + adjustedTime(minute) + ":" + adjustedTime(second);
             document.getElementById("clock").innerHTML = display; 
         }
+        // document.getElementById("pauseBtn").addEventListener("onclick",function(){clearInterval(t)});
+        // document.getElementById("continueBtn").addEventListener("onclick",function(){var t = setInterval(countdown,1000)})
     }
 }

@@ -11,8 +11,6 @@
     <style>
         #choices li {
             margin-bottom: 7px;
-        }
-        #choices li {
             margin-left: 10px;
         }
         #choices li:nth-child(5n) {
@@ -32,21 +30,49 @@
             bottom:45px;
         }
         #clock {
+            margin:0px 0px;
+        }
+        label {
+            padding-top: 1px;
+            padding-right: 1.9px;
+            transition: background-color 0.2s;
+            transition-delay: 0.1s
+        }
+        label:hover {
+            background-color: #e6e6e6;
+        }
+        #clockContainer {
+            visibility: hidden;
             position: absolute;
             right: 50px;
-            top: 150px
+            top: 150px;
+            padding:10px 10px;
+            border:5px solid #b595f1;
+            border-radius:10px;
+        }
+        #continueBtn {
+            position:relative;
+            left: 10px;
+            height: 21px;
+        }
+        #pauseBtn {
+            position:relative;
+            left:32px;
+            height: 21px;
+            opacity:50%;
         }
     </style>
+    <link rel="icon" href="webIcon.png">
 </head>
 <body>
     <ul class="navbuttons">
+        <img src="webIcon.png" alt="">
         <li class="navbuttons"><span>Hello</span></li>
-        <li class="navbuttons"><a href="domc.html">challenge</a></li>
-        <li class="navbuttons"><a href="index.html">answer</a></li>
-        <li class="navbuttons"><a href="#">Tutorial</a></li>
         <li class="navbuttons"><a href="#">Contact Us</a></li>
+        <li class="navbuttons"><a href="#">Tutorial</a></li>
+        <li class="navbuttons"><a href="index.html">Answer</a></li>
+        <li class="navbuttons"><a href="domc.html">Challenge</a></li>
     </ul>
-    <br>
     <div id = "testSelect">
     <span>subject: </span>
     <select id="select_subject">
@@ -60,17 +86,21 @@
     <span>paper: </span><select id='select_paper' onchange='selected(response_array,false)'><option value='none'>--</option></select>
     <br><br><br><span>timer(min): </span><select id="selectTime"><option value="off" selected>OFF</select>
     <span style="margin-left: 5px;"><span>auto-submission</span><input id="autoSubBox" type="checkbox" disabled></input></span>
-    <br><br><button id="showQuestion">test</button>
+    <br><br><button id="showQuestion" disabled>test</button>
     </div>
     <form>
+    <div id='clockContainer'>
     <h2 id="clock"></h2>
+    <img id="continueBtn" src="continueBtn.png">
+    <img id="pauseBtn" src="pauseBtn.png">
+    </div>
     <ol id='choices'>
         <!-- <li>
             <form>
-                <input name="Q1" type="radio">
-                <input name="Q1" type="radio">
-                <input name="Q1" type="radio">
-                <input name="Q1" type="radio">
+                <label><input name="Q1" type="radio"></label>
+                <label><input name="Q1" type="radio"></label>
+                <label><input name="Q1" type="radio"></label>
+                <label><input name="Q1" type="radio"></label>
             </form>
         </li> -->
     </ol>
@@ -117,6 +147,19 @@
                 autoSubbox.checked = false
             }
         })
+        // check if year and paper is selected and enable subAnsButton
+        function paperIsSelected() {
+            var selectYear = document.getElementById("select_year").value;
+            var selectPaper = document.getElementById("select_paper").value;
+            if (selectYear != "none" & selectPaper != "none") {
+                document.getElementById("showQuestion").disabled = false;
+            }
+            else {
+                document.getElementById("showQuestion").disabled = true;
+            }
+        }
+        document.getElementById("select_year").addEventListener("change",paperIsSelected);
+        document.getElementById("select_paper").addEventListener("change",paperIsSelected);
     </script>
 </body>
 </html>

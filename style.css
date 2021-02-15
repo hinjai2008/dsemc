@@ -1,29 +1,35 @@
 ul.navbuttons {
-    background-color: rgb(118, 118, 228);
+    background-color: #b595f1;
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
+    margin-bottom: 20px;
 }
-li.navbuttons {
-    float: left;
-}
+
 li.navbuttons a {
+    float: right;
     display: block;
-    padding:15px 12px;
+    padding: 17px 30px;
     text-decoration: none;
     text-align:center;
-    color: rgb(238, 240, 134);
-    transition: background-color 0.2s, color 0.2s
+    color: white;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 15px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    color:black;
+    font-weight: 150
 }
 li.navbuttons a:hover {
-    background-color:rgb(6, 6, 109);
+    background-color:#5822c8;
     color: white
 }
 li.navbuttons span {
+    float: left;
     display:block;
-    padding:15px 30px;
+    padding:17px 30px;
     text-align:center;
+    font-size: 15px
 }
 table {
     width:100%;
@@ -36,4 +42,12 @@ th, td {
 } 
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+
+img {
+    position: relative;
+    top:10px;
+    left:13px;
+    float: left;
+    height:30px
 }
