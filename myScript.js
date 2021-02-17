@@ -307,8 +307,8 @@ function adjustedTime(time) {
 }
 function setTimer() {
     if (document.getElementById("selectTime").value != "off") {
-        // var selectedTime = parseInt(document.getElementById("selectTime").value)
-        var selectedTime = 1
+        var selectedTime = parseInt(document.getElementById("selectTime").value)
+//         var selectedTime = 1
         var second = 0;
         if (selectedTime<60) {
             var minute = selectedTime
