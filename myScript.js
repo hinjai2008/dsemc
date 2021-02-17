@@ -153,6 +153,8 @@ function subjbuttons_events(subjId) {
 
 //also show the submit button
 function showQuestions(numQuestion){
+    document.getElementById("choices").style.height = "650px";
+    document.getElementById("splitScreenAdvice").style.display = "none";
     for(var i=0; i<numQuestion; i++) {
         var qName = "Q" + String(i+1);
         var qLi = document.createElement("LI");;
@@ -190,7 +192,7 @@ function showSubBtn () {
 
 function subAnsEvents () {
     document.getElementById("choices").style.display = "none";
-    document.getElementById("clock").style.display = "none";
+    document.getElementById("clockContainer").style.display = "none";
     submitAns(filter_array.length);
     marking(filter_array.length);
     showResult();
@@ -305,8 +307,8 @@ function adjustedTime(time) {
 }
 function setTimer() {
     if (document.getElementById("selectTime").value != "off") {
-        var selectedTime = parseInt(document.getElementById("selectTime").value)
-        var autoSubBoxChecked = document.getElementById("autoSubBox").checked
+        // var selectedTime = parseInt(document.getElementById("selectTime").value)
+        var selectedTime = 1
         var second = 0;
         if (selectedTime<60) {
             var minute = selectedTime
@@ -320,6 +322,7 @@ function setTimer() {
         document.getElementById("clock").innerHTML = display; 
         document.getElementById("clockContainer").style.visibility = "visible";
         var t = setInterval(countdown,1000)
+        document.getElementById("pauseBtn").addEventListener("click",pauseTimerEvents)
         function countdown() {
             second -= 1
             if (second<0) {
@@ -334,7 +337,8 @@ function setTimer() {
                         second = 0
                         clearInterval(t)
                         //auto-submission
-                        if (autoSubBoxChecked == true) {
+                        var autoSubSwitchChecked = document.getElementById("autoSubSwitch").checked
+                        if (autoSubSwitchChecked == true) {
                             subAnsEvents()
                         }
                     }
@@ -343,7 +347,30 @@ function setTimer() {
             var display = adjustedTime(hour) + ":" + adjustedTime(minute) + ":" + adjustedTime(second);
             document.getElementById("clock").innerHTML = display; 
         }
-        // document.getElementById("pauseBtn").addEventListener("onclick",function(){clearInterval(t)});
-        // document.getElementById("continueBtn").addEventListener("onclick",function(){var t = setInterval(countdown,1000)})
+        function pauseTimerEvents(evt) {
+            var continueBtn = document.getElementById("continueBtn");
+            clearInterval(t);
+            continueBtn.style.opacity = "30%";
+            evt.target.style.opacity = "100%";
+            evt.target.removeEventListener("click",pauseTimerEvents);
+            continueBtn.addEventListener("click", continueTimerEvents);
+        }
+        
+        function continueTimerEvents(evt) {
+            var pauseBtn = document.getElementById("pauseBtn");
+            t = setInterval(countdown,1000);
+            pauseBtn.style.opacity = "30%";
+            evt.target.style.opacity = "100%";
+            evt.target.removeEventListener("click", continueTimerEvents);
+            pauseBtn.addEventListener("click", pauseTimerEvents);
+        }
+    }
+}
+
+// refer the auto sub instruction from the start page to the testing page
+function checkAutoSub() {
+    var autoSubBox = document.getElementById("autoSubBox")
+    if (autoSubBox.checked == true) {
+        document.getElementById("autoSubSwitch").checked = true;
     }
 }
