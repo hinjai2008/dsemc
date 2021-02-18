@@ -1,3 +1,27 @@
+body {
+    margin: 0;
+}
+
+.pageContainer {
+    min-height: 85vh;
+    position: relative;
+    padding-bottom: 15vh;
+}
+
+.mainContent{
+    margin-left:10px;
+}
+
+footer {
+    position:absolute;
+    bottom:0px;
+    width:100%;
+    background-color:#b595f1;
+    height:30px;
+    text-align:center;
+    padding-top:15px
+}
+
 ul.navbuttons {
     background-color: #b595f1;
     list-style-type: none;
@@ -10,7 +34,7 @@ ul.navbuttons {
 li.navbuttons a {
     float: right;
     display: block;
-    padding: 17px 30px;
+    padding: 21px 30px;
     text-decoration: none;
     text-align:center;
     color: white;
@@ -29,8 +53,11 @@ li.navbuttons span {
     display:block;
     padding:17px 30px;
     text-align:center;
-    font-size: 15px
+    font-size: 20px;
+    font-family: Copperplate, fantasy;
+    text-decoration:none;
 }
+
 table {
     width:100%;
     border-collapse:collapse;
@@ -44,10 +71,17 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-img {
+#webIcon {
     position: relative;
-    top:10px;
+    top:13px;
     left:13px;
     float: left;
-    height:30px
+    height:30px;
 }
+
+a img {
+    height:30px;
+}
+
+
+

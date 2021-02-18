@@ -3,19 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MC test - MCQer</title>
     <link rel="stylesheet" href="style.css">  
     <script src="jquery-3.5.1.js"></script>
     <script src="myScript.js"></script>
     <script src="data.js"></script>
     <script src="https://kit.fontawesome.com/899f5f8cf8.js" crossorigin="anonymous"></script>
     <style>
-        body {
-            margin: 0;
-        }
-        #mainContent{
-            margin-left:10px;
-        }
         #choices li {
             margin-bottom: 7px;
             margin-left: 10px;
@@ -129,7 +123,7 @@
             padding:10px;
             position:absolute;
             right:0;
-            top:51.33px;
+            top:58px;
             bottom:0;
             width:380px;
             background-color:#c6f68d;
@@ -167,21 +161,25 @@
     <link rel="icon" href="webIcon.png">
 </head>
 <body>
+    <div class="pageContainer">
     <ul class="navbuttons">
-        <img src="webIcon.png" alt="">
-        <li class="navbuttons"><span>Hello</span></li>
+        <a class="iconButton" href="index.html">
+        <img id="webIcon" src="webIcon.png" alt="">
+        <li class="navbuttons"><span>MCQer</span></li>
+        </a>
         <!-- <li class="navbuttons"><a href="#">Contact Us</a></li> -->
-        <li class="navbuttons"><a href="#">Tutorial</a></li>
+        <!-- <li class="navbuttons"><a href="#">Tutorial</a></li> -->
         <li class="navbuttons"><a href="index.html">Answer</a></li>
-        <li class="navbuttons"><a href="domc.html">Challenge</a></li>
+        <li class="navbuttons"><a href="domc.html">Test</a></li>
     </ul>
     <div id="splitScreenAdvice">
         <p>If you have a soft-copy of the question paper,<br>you are advised to use split screen mode to optimize the experience.</p>
         <i id="arrow1" class="fas fa-angle-right"></i>
         <i id="arrow2" class="fas fa-angle-right"></i>
     </div>
-    <div id="mainContent">
-    <div id = "testSelect">
+    <div class="mainContent">
+    <p>In this page, you can test your knowledge on different subjects by answering mc questions from DSE past papers.<br> We will mark and analyze your answers.</p>
+    <br><div id = "testSelect">
     <span>subject: </span>
     <select id="select_subject">
         <option value="none">Please Select</option>
@@ -226,6 +224,8 @@
     <p id="levelMark"></p>
     <div id="markingTable"></div>
     </div>
+    <footer><small>&copy; Copyright 2021, MCQer. All rights reserved.</small></footer>
+    </div>  
     <script>
         //timer options
         window.onload = function(){
@@ -250,8 +250,8 @@
         })
         document.getElementById("select_subject").addEventListener("change", function(evt){
             if (evt.target.value != "none") {
-                get_array(evt.target.value,false);
-                selectable(2);
+                get_array(evt.target.value,false,2);
+                // selectable(2);
             }
             else {
                 window.location.reload(false);

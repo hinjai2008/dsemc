@@ -44,7 +44,7 @@ function getdb(subj) {
 }
 
 //used when only frontend used
-function get_array(subj,isIndexPage) {
+function get_array(subj,isIndexPage,selectableCol) {
     response_array = []
     var response_json = data[subj]
     for (x in response_json) {
@@ -52,6 +52,7 @@ function get_array(subj,isIndexPage) {
         ['question_num',response_json[x]['question_num']],['key',response_json[x]['key']],['%correct',response_json[x]['%correct']]];
         response_array.push(add);
     }
+    selectable(selectableCol);
     if (isIndexPage == true) {
         sort_data();
     }
@@ -146,9 +147,9 @@ function display_table(array) {
 };
 
 function subjbuttons_events(subjId) {
-    get_array(subjId,true);
+    get_array(subjId,true,3);
     // display_table(response_array);
-    selectable(3);
+    // selectable(3);
 };
 
 //also show the submit button
@@ -307,8 +308,8 @@ function adjustedTime(time) {
 }
 function setTimer() {
     if (document.getElementById("selectTime").value != "off") {
-        // var selectedTime = parseInt(document.getElementById("selectTime").value)
-        var selectedTime = 1
+        var selectedTime = parseInt(document.getElementById("selectTime").value)
+        // var selectedTime = 1
         var second = 0;
         if (selectedTime<60) {
             var minute = selectedTime

@@ -4,26 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MC Answers - MCQer</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .mainContent{
+            margin-left:10px;
+        }
+    </style>
     <link rel="icon" href="webIcon.png">
     <script src="https://kit.fontawesome.com/899f5f8cf8.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="pageContainer">
     <ul class="navbuttons">
-        <img src="webIcon.png" alt="">
-        <li class="navbuttons"><span>Hello</span></li>
+        <img id="webIcon" src="webIcon.png" alt="">
+        <li class="navbuttons"><span>MCQer</span></li>
         <!-- <li class="navbuttons"><a href="#">Contact Us</a></li> -->
-        <li class="navbuttons"><a href="#">Tutorial</a></li>
+        <!-- <li class="navbuttons"><a href="#">Tutorial</a></li> -->
         <li class="navbuttons"><a href="index.html">Answer</a></li>
-        <li class="navbuttons"><a href="domc.html">Challenge</a></li>
+        <li class="navbuttons"><a href="domc.html">Test</a></li>
     </ul>
-
-    <button id='bio_mc'  class='subjbuttons'>bio</button>
+    <div class="mainContent">
+    <!-- <button id='bio_mc'  class='subjbuttons'>bio</button>
     <button id='chem_mc' class='subjbuttons'>chem</button>
     <button id='phy_mc'  class='subjbuttons'>phy</button>
-    <button id='math_mc' class='subjbuttons'>math</button>
-    <br>
+    <button id='math_mc' class='subjbuttons'>math</button> -->
+    <p>Welcome! This page provides DSE MC answers and percentage of candidate answering correct the correct answer in previous years.</p>
+    <span>Subject: </span>
+    <select id="selectSubjectDB">
+        <option value='bio_mc' selected>Biology</option>
+        <option value='chem_mc'>Chemistry</option>
+        <option value='phy_mc'>Physics</option>
+        <option value='math_mc'>Mathematics</option>
+    </select>
+    <br><br>
 
     <!-- <button onclick="sort_data(1)">sort by year </button>
     <button onclick="sort_data(2)">sort by paper</button>
@@ -57,15 +71,17 @@
             </tr>
         </table>
     </div>
+    </div>  
+    <footer><small>&copy; Copyright 2021, MCQer. All rights reserved.</small></footer>
+    </div>
     <script src="jquery-3.5.1.js"></script>
     <script src="data.js"></script>
     <script src="myScript.js"></script>
     <script>
         function initialize() {
-            for (var i = 0; i < $(".subjbuttons").length; i++) {
-                var subjid = $(".subjbuttons")[i].id;
-                $(".subjbuttons")[i].addEventListener("click",function(evt){subjbuttons_events(evt.target.id);})
-                }
+            var selectSubjectDB = document.getElementById("selectSubjectDB")
+            subjbuttons_events(selectSubjectDB.value);
+            selectSubjectDB.addEventListener("change",function(evt){subjbuttons_events(evt.target.value)});
         }
         window.onload = initialize
     </script>
