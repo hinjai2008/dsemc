@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MC test - MCQer</title>
+    <meta name="description" content="DSE MC 操卷必備網站，在此回答DSE Past Paper MC 問題，讓我們幫你對答案及分析你的弱點再那裡。">
+    <title>DSE MC test - MCQer</title>
     <link rel="stylesheet" href="style.css">  
     <script src="jquery-3.5.1.js"></script>
     <script src="myScript.js"></script>
@@ -19,6 +20,7 @@
         }
         #choices {
             position: relative;
+            top:60px;
             width:300px;
             /* height: 650px; */
             display: flex;
@@ -45,8 +47,8 @@
         #clockContainer {
             visibility: hidden;
             position: absolute;
-            left: 475px;
-            top: 150px;
+            left: 240px;
+            top: 170px;
             padding:10px 10px;
             border:5px solid #b595f1;
             border-radius:10px;
@@ -120,18 +122,8 @@
             left:19px;
         }
         #splitScreenAdvice {
-            padding:10px;
-            position:absolute;
-            right:0;
-            top:58px;
-            bottom:0;
-            width:380px;
-            background-color:#c6f68d;
-        }
-        #splitScreenAdvice p {
-            padding-top:60%;
-            text-align: center;
-        }
+                display:none;
+            }
         @keyframes arrowMove {
             0% {right:0px;}
             50% {right:8px}
@@ -152,10 +144,40 @@
         #arrow2 {
             bottom:20%;
         }
-        @media only screen and (max-width: 700px) {
+        @media only screen and (min-width: 700px) {
             #splitScreenAdvice {
-                display:none;
-            }
+            display:block;
+            padding:10px;
+            position:absolute;
+            right:0;
+            top:58px;
+            bottom:0;
+            width:380px;
+            background-color:#c6f68d;
+        }
+        #splitScreenAdvice p {
+            padding-top:60%;
+            text-align: center;
+        }
+        }
+        @media only screen and (min-width: 400px) {
+            #choices {
+            position: relative;
+            width:300px;
+            /* height: 650px; */
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+            #clockContainer {
+            visibility: hidden;
+            position: absolute;
+            left: 475px;
+            top: 150px;
+            padding:10px 10px;
+            border:5px solid #b595f1;
+            border-radius:10px;
+        }
         }
     </style>
     <link rel="icon" href="webIcon.png">
@@ -163,10 +185,8 @@
 <body>
     <div class="pageContainer">
     <ul class="navbuttons">
-        <a class="iconButton" href="index.html">
         <img id="webIcon" src="webIcon.png" alt="">
         <li class="navbuttons"><span>MCQer</span></li>
-        </a>
         <!-- <li class="navbuttons"><a href="#">Contact Us</a></li> -->
         <!-- <li class="navbuttons"><a href="#">Tutorial</a></li> -->
         <li class="navbuttons"><a href="index.html">Answer</a></li>
@@ -178,7 +198,7 @@
         <i id="arrow2" class="fas fa-angle-right"></i>
     </div>
     <div class="mainContent">
-    <p>In this page, you can test your knowledge on different subjects by answering mc questions from DSE past papers.<br> We will mark and analyze your answers.</p>
+    <p>In this page, you can test yourself by answering mc questions from DSE past papers. <br>We will mark and analyze your answers.</p>
     <br><div id = "testSelect">
     <span>subject: </span>
     <select id="select_subject">
