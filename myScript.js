@@ -154,7 +154,8 @@ function subjbuttons_events(subjId) {
 
 //also show the submit button
 function showQuestions(numQuestion){
-    document.getElementById("choices").style.height = "650px";
+    document.getElementById("choices").style.display = "flex";
+    if (numQuestion > 40) {document.getElementById("choices").style.height= "760px";}
     document.getElementById("splitScreenAdvice").style.display = "none";
     for(var i=0; i<numQuestion; i++) {
         var qName = "Q" + String(i+1);
@@ -172,9 +173,9 @@ function showQuestions(numQuestion){
         var target = document.getElementById("choices");
         target.appendChild(qLi);
     }
-    if (numQuestion>40) {
-        choices.style.width = "450px"
-    }
+    // if (numQuestion>40) {
+    //     choices.style.width = "450px"
+    // }
     showSubBtn();
 }
 
