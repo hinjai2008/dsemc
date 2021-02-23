@@ -7,12 +7,7 @@
     <title>DSE MC test - MCQer</title>
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="style.css">  
-    <script src="jquery-3.5.1.js"></script>
-    <script src="myScript.js"></script>
-    <script src="data.js"></script>
-    <script src="https://kit.fontawesome.com/899f5f8cf8.js" crossorigin="anonymous"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-325KH1ETWM"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -156,21 +151,26 @@
         #arrow2 {
             bottom:20%;
         }
-        @media only screen and (min-width: 700px) {
+        @media only screen and (min-width: 800px) {
             #splitScreenAdvice {
+            box-sizing:border-box;
             display:block;
-            padding:10px;
+            padding:0px 8px;
             position:absolute;
             right:0;
             top:58px;
             bottom:0;
-            width:380px;
+            width:35%;
             background-color:#c6f68d;
         }
-        #splitScreenAdvice p {
-            padding-top:60%;
-            text-align: center;
-        }
+            #splitScreenAdvice p {
+                padding-top:48%;
+                text-align: center;
+            }
+            #splitScreenAdvice + .mainContent {
+                box-sizing:border-box;
+                width:65%;
+            }
         }
         @media only screen and (min-width: 430px) {
             #choices {
@@ -183,12 +183,13 @@
             flex-wrap: wrap;
             padding-left:10px;
             margin-left:20px;
+            top:18px;
         }
             #clockContainer {
             visibility: hidden;
             position: absolute;
-            left: 475px;
-            top: 150px;
+            left: 430px;
+            top: 230px; 
             padding:10px 10px;
             border:5px solid #b595f1;
             border-radius:10px;
@@ -260,7 +261,12 @@
     <div id="markingTable"></div>
     </div>
     <footer><small>&copy; Copyright 2021, MCQer. All rights reserved.</small></footer>
-    </div>  
+    </div> 
+    <!-- <script src="jquery-3.5.1.js"></script> -->
+    <script src="myScript.js"></script>
+    <script src="data.js"></script>
+    <script src="https://kit.fontawesome.com/899f5f8cf8.js" crossorigin="anonymous"></script> 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-325KH1ETWM"></script>
     <script>
         //timer options
         window.onload = function(){

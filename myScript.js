@@ -59,7 +59,8 @@ function get_array(subj,isIndexPage,selectableCol) {
 }
 
 function sort_data() {
-    column = $("#sort_select").val()
+    // column = $("#sort_select").val()
+    column = documemt.getElementById("sort_select").value
     sort_by = column;
     sort_array = response_array.slice();
     if (column == 3 || column == 1) {
@@ -206,9 +207,13 @@ function subAnsEvents () {
 function submitAns(numQuestion){
     subAns = [];
     for (var i=0; i<numQuestion; i++) {
-        var qAns = $("input[name=Q"+String(i+1)+"]:checked").val()
-        if (typeof qAns == "undefined") {
+        // var qAns = $("input[name=Q"+String(i+1)+"]:checked").val()
+        var qAns = document.querySelector("input[name=Q"+String(i+1)+"]:checked")
+        if (qAns == null) {
             qAns = "/";
+        }
+        else {
+            qAns = qAns.value
         }
         subAns.push(qAns);
     }

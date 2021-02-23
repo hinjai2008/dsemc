@@ -83,5 +83,14 @@ a img {
     height:30px;
 }
 
+#webIcon {
+    width:30px;
+    height:30px;
+}
+
+#autoSubBox {
+    position:relative;
+    left:5px;
+}
 
 
