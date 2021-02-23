@@ -155,6 +155,7 @@ function subjbuttons_events(subjId) {
 
 //also show the submit button
 function showQuestions(numQuestion){
+    document.getElementsByClassName("mainContent")[0].style.width = "100%";
     document.getElementById("choices").style.display = "flex";
     if (numQuestion > 40) {document.getElementById("choices").style.height= "760px";}
     document.getElementById("splitScreenAdvice").style.display = "none";
